@@ -1,6 +1,4 @@
 import os
-import subprocess
-
 from pytube import YouTube
 from pytube import Playlist
 from moviepy.video.io.VideoFileClip import VideoFileClip
@@ -195,14 +193,14 @@ def download_playlist_music():
 
 def main_menue():
     menu = {
-        "1": ["\033[92mdownload a video\033[0m", download_one_video],
-        "2": ["\033[92mdownload multiple videos\033[0m", download_multiple_video_by_url, '\033[94m'],
-        "3": ["\033[92mdownload videos from file\033[0m", download_multiple_video_by_file, '\033[94m'],
-        "4": ["\033[92mdownload videos from youtube playlist\033[0m", download_playlist_video, '\033[94m'],
-        "5": ["\033[94mdownload a music\033[0m", download_one_music],
-        "6": ["\033[94mdownload multiple music\033[0m", download_multiple_music, '\033[94m'],
-        "7": ["\033[94mdownload music from file\033[0m", download_multiple_music_by_file, '\033[94m'],
-        "8": ["\033[94mdownload musics from youtube playlist\033[0m", download_playlist_music],
+        "1": ["\033[92mdownload a \033[91myoutube\033[92m video\033[0m", download_one_video],
+        "2": ["\033[92mdownload multiple \033[91myoutube\033[92m videos\033[0m", download_multiple_video_by_url, '\033[94m'],
+        "3": ["\033[92mdownload \033[91myoutube\033[92m videos from file\033[0m", download_multiple_video_by_file, '\033[94m'],
+        "4": ["\033[92mdownload youtube videos from \033[92myoutube\033[94m playlist\033[0m", download_playlist_video, '\033[94m'],
+        "5": ["\033[94mdownload a music on \033[91myoutube\033[0m", download_one_music],
+        "6": ["\033[94mdownload multiple music on \033[91myoutube\033[0m", download_multiple_music, '\033[94m'],
+        "7": ["\033[94mdownload music on \033[91myoutube\033[94m from file\033[0m", download_multiple_music_by_file, '\033[94m'],
+        "8": ["\033[94mdownload musics from \033[91myoutube\033[0m \033[94mplaylist\033[0m", download_playlist_music],
         "9": ["\033[91mquit\033[0m", quit]
     }
     menu_maximum_number = len(menu)
