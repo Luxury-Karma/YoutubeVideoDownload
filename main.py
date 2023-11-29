@@ -3,7 +3,7 @@ import re
 import sys
 
 from moviepy.video.io.VideoFileClip import VideoFileClip
-
+import os
 from cli_interaction import *
 from pytube import YouTube
 from pytube import Playlist
@@ -62,7 +62,7 @@ def playlist_download(playlist_url: str, download_path: str):
     total_video_downloaded = 0
 
     for video in playlist.video_urls:
-        print(f'\033[93mDownload complete: {total_video_downloaded}/{total_video_amount}\033[0m')
+        print(f'\n\033[93mDownload complete: {total_video_downloaded}/{total_video_amount}\033[0m')
         video_path = download_video(video, download_path)
         if video_path == "all ready Downloaded":
             total_video_downloaded = total_video_downloaded + 1

@@ -41,7 +41,7 @@ def download_multiple_video_by_url():
 
 
 def download_multiple_video_by_file():
-    download_video_from_file(input('Enter text file path: '),directory_sanitization('Enter the download path'))
+    return download_video_from_file(input('Enter text file path: '),directory_sanitization('Enter the download path'))
 
 
 def download_playlist_video():
