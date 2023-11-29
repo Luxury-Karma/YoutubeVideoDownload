@@ -1,10 +1,29 @@
-import argparse
-import re
-import sys
+"""
 
+ /$$                                                                 /$$   /$$
+| $$                                                                | $$  /$$/
+| $$       /$$   /$$ /$$   /$$ /$$   /$$  /$$$$$$  /$$   /$$        | $$ /$$/   /$$$$$$   /$$$$$$  /$$$$$$/$$$$   /$$$$$$
+| $$      | $$  | $$|  $$ /$$/| $$  | $$ /$$__  $$| $$  | $$        | $$$$$/   |____  $$ /$$__  $$| $$_  $$_  $$ |____  $$
+| $$      | $$  | $$ \  $$$$/ | $$  | $$| $$  \__/| $$  | $$        | $$  $$    /$$$$$$$| $$  \__/| $$ \ $$ \ $$  /$$$$$$$
+| $$      | $$  | $$  >$$  $$ | $$  | $$| $$      | $$  | $$        | $$\  $$  /$$__  $$| $$      | $$ | $$ | $$ /$$__  $$
+| $$$$$$$$|  $$$$$$/ /$$/\  $$|  $$$$$$/| $$      |  $$$$$$$        | $$ \  $$|  $$$$$$$| $$      | $$ | $$ | $$|  $$$$$$$
+|________/ \______/ |__/  \__/ \______/ |__/       \____  $$ /$$$$$$|__/  \__/ \_______/|__/      |__/ |__/ |__/ \_______/
+                                                   /$$  | $$|______/
+                                                  |  $$$$$$/
+                                                   \______/
+"""
+
+"""
+A youtube Downloader helper. Perfect to skip the premium fees
+"""
+
+
+
+from cli_interaction import *
+import argparse
+import sys
 from moviepy.video.io.VideoFileClip import VideoFileClip
 import os
-from cli_interaction import *
 from pytube import YouTube
 from pytube import Playlist
 
@@ -121,34 +140,8 @@ def argument_handler():
     return parser.parse_args()
 
 
-def directory_sanitization(prompt: str):
-    while True:
-        input_path = input(prompt)
-        if os.path.exists(input_path) and os.path.isdir(input_path):
-            return os.path.abspath(input_path)
-        else:
-            # Raise a ValueError if the path is not a valid directory
-            raise ValueError(f"{input_path} is not a valid existing directory.")
 
 
-def youtube_url_sanitization(prompt: str):
-    # Define a regular expression pattern for YouTube video URLs
-    youtube_url_pattern = re.compile(
-        r"^(https?://)?(www\.)?(youtube|youtu|youtube-nocookie)\.(com|be)/(watch\?v=|embed/|v/|.+\?v=)?([^&=%\?]{11})"
-    )
-
-    while True:
-        input_url = input(prompt)
-        # Check if the input URL matches the YouTube URL pattern
-        match = youtube_url_pattern.match(input_url)
-        if input_url.lower() == 'quit' or input_url.lower() == 'q':
-            return 'quit'
-        if match:
-            # Return the sanitized URL
-            return "https://www.youtube.com/watch?v=" + match.group(6)
-        else:
-            # Raise a ValueError if the input is not a valid YouTube video URL
-            raise ValueError(f"{input_url} is not a valid YouTube video URL.")
 
 
 if __name__ == "__main__":

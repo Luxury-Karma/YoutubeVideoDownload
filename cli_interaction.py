@@ -1,16 +1,7 @@
 from main import *
+from input_sanitization import *
 import os
 
-
-def user_menu_sanitisation(prompt: str, maximum_input: int):
-    while True:
-        u_input = input(prompt)
-        try:
-            u_input = int(u_input)
-            if u_input >= 1 and u_input <= maximum_input:
-                return f'{u_input}'
-        except:
-            print(f"try again. The input wasn't an allowed number.\n it should be in between 1 and {maximum_input}")
 
 
 def download_one_video():
@@ -41,11 +32,11 @@ def download_multiple_video_by_url():
 
 
 def download_multiple_video_by_file():
-    return download_video_from_file(input('Enter text file path: '),directory_sanitization('Enter the download path'))
+    return download_video_from_file(file_sanitization('Enter text file path: '), directory_sanitization('Enter the download path'))
 
 
 def download_playlist_video():
-    return playlist_download(input('Enter the link to the playlist: '),directory_sanitization('Enter where to download the playlist: '))
+    return playlist_download(file_sanitization('Enter the link to the playlist: '), directory_sanitization('Enter where to download the playlist: '))
 
 
 def download_one_music():
@@ -93,7 +84,8 @@ def main_menu():
         "9": ["\033[91mquit\033[0m", quit]
     }
     menu_maximum_number = len(menu)
-    while True:
-        for e in menu:
-            print(f'{e}: {menu[e][0]}')
-        menu[user_menu_sanitisation(f"enter a number in between 1 and {menu_maximum_number}: ", menu_maximum_number)][1]()
+    running = True
+    while running:
+        for el in menu:
+            print(f'{el}: {menu[el][0]}')
+        menu[user_menu_sanitization(f"enter a number in between 1 and {menu_maximum_number}: ", menu_maximum_number)][1]()
