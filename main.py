@@ -24,7 +24,7 @@ def download_video(video_url, output_path) -> str:
     try:
         yt = YouTube(video_url, on_progress_callback=on_progress)
         print(f'\nThe video {yt.title} start is download\n')
-        if not os.path.isfile(f'{output_path}\\{yt.title}.mp3') or not os.path.isfile(f'{output_path}\\{yt.title}.mp3'):
+        if not os.path.isfile(f'{output_path}\\{yt.title}.mp3') or not os.path.isfile(f'{output_path}\\{yt.title}.mp4'):
             video_file_path = yt.streams.filter(progressive=True,
                                                 file_extension='mp4').desc().get_highest_resolution().download(
                 output_path)
