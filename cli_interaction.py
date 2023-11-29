@@ -45,7 +45,7 @@ def download_multiple_video_by_file():
 
 
 def download_playlist_video():
-    playlist_download(input('Enter the link to the playlist: '),directory_sanitization('Enter where to download the playlist: '))
+    return playlist_download(input('Enter the link to the playlist: '),directory_sanitization('Enter where to download the playlist: '))
 
 
 def download_one_music():
@@ -72,8 +72,12 @@ def download_multiple_music_by_file():
 def download_playlist_music():
     output_path, video_path = download_playlist_video()
     for e in video_path:
-        convert_video_to_mp3(e, output_path)
-        os.remove(e)
+        try:
+            convert_video_to_mp3(e, output_path)
+            os.remove(e)
+        except Exception as j:
+            print(f'ERROR : {j}')
+            continue
 
 
 def main_menu():
