@@ -36,7 +36,7 @@ def download_multiple_video_by_file():
 
 
 def download_playlist_video():
-    return playlist_download(file_sanitization('Enter the link to the playlist: '), directory_sanitization('Enter where to download the playlist: '))
+    return playlist_download(is_youtube_url('Enter the link to the playlist: '), directory_sanitization('Enter where to download the playlist: '))
 
 
 def download_one_music():
@@ -76,7 +76,7 @@ def main_menu():
         "1": ["\033[92mdownload a \033[91myoutube\033[92m video\033[0m", download_one_video],
         "2": ["\033[92mdownload multiple \033[91myoutube\033[92m videos\033[0m", download_multiple_video_by_url, '\033[94m'],
         "3": ["\033[92mdownload \033[91myoutube\033[92m videos from file\033[0m", download_multiple_video_by_file, '\033[94m'],
-        "4": ["\033[92mdownload youtube videos from \033[92myoutube\033[92m playlist\033[0m", download_playlist_video, '\033[94m'],
+        "4": ["\033[92mdownload youtube videos from \033[91myoutube\033[92m playlist\033[0m", download_playlist_video, '\033[94m'],
         "5": ["\033[94mdownload a music on \033[91myoutube\033[0m", download_one_music],
         "6": ["\033[94mdownload multiple music on \033[91myoutube\033[0m", download_multiple_music, '\033[94m'],
         "7": ["\033[94mdownload music on \033[91myoutube\033[94m from file\033[0m", download_multiple_music_by_file, '\033[94m'],

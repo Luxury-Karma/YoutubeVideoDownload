@@ -34,6 +34,14 @@ def youtube_url_sanitization(prompt: str) -> str:
 
     return input_url
 
+def is_youtube_url(prompt: str) -> bool:
+    url = input(prompt)
+    youtube_base_url_pattern = re.compile(r'^https://www\.youtube\.com/')
+    if youtube_base_url_pattern.match(url):
+        return url
+    else:
+        raise ValueError(f"{url} is not a valid YouTube URL.\nEnter a valid Youtube URL")
+
 
 def directory_sanitization(prompt: str):
     sanitized = False
